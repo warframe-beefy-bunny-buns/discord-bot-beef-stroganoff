@@ -3,7 +3,7 @@ const Discord = require('discord.js')
 const dotenv = require('dotenv')
 dotenv.config()
 const colors = require('colors')
-const { prefix } = require('./constants/constants.js')
+const { TOKEN, PREFIX } = require('./config.js')
 
 let client = new Discord.Client()
 
@@ -29,9 +29,9 @@ client.on('message', async (message) => {
     author: { bot },
   } = message
 
-  if (!content.startsWith(prefix) || bot) return
+  if (!content.startsWith(PREFIX) || bot) return
 
-  const args = content.slice(prefix.length).trim().split(/ +/)
+  const args = content.slice(PREFIX.length).trim().split(/ +/)
   const command = args.shift().toLowerCase()
 
   if (!client.commands.has(command)) return
@@ -44,4 +44,4 @@ client.on('message', async (message) => {
   }
 })
 
-client.login(process.env.TOKEN)
+client.login(TOKEN)

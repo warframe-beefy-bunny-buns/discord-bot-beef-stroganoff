@@ -1,14 +1,14 @@
 const fs = require('fs')
-const { prefix } = require('../constants/constants.js')
+const { PREFIX } = require('../config.js')
 
 const commandFiles = fs
   .readdirSync('./commands')
   .filter((file) => file.endsWith('.js') && file !== 'help.js')
 
-let helpString = `\n  ${prefix}help: Help new users by displaying list of commands`
+let helpString = `\n  ${PREFIX}help: Help new users by displaying list of commands`
 for (const file of commandFiles) {
   const command = require(`./${file}`)
-  helpString += `\n  ${prefix}${command.name}: ${command.description}`
+  helpString += `\n  ${PREFIX}${command.name}: ${command.description}`
 }
 
 module.exports = {
