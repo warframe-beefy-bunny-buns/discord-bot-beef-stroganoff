@@ -1,0 +1,17 @@
+{
+  "name": "beef-stroganoff",
+  "scripts": {
+    "start": "node ./app.js"
+  },
+  "version": "0.1.0",
+  "description": "Warframe Discord bot named Beef Stroganoff (Noffy)",
+  "main": "app.js",
+  "repository": "https://github.com/warframe-beefy-bunny-buns/discord-bot-beef-stroganoff.git",
+  "author": "Taehyeon Kim <1234tgk@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "discord.js": "^12.5.3",
+    "dotenv": "^10.0.0"
+  }
+}
