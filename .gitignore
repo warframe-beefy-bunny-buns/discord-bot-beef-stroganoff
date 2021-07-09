@@ -102,6 +102,3 @@ dist
 
 # TernJS port file
 .tern-port
-
-# secret text file that has some sensitive info for reference
-secret.txt
