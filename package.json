@@ -1,7 +1,7 @@
 {
   "name": "beef-stroganoff",
   "scripts": {
-    "start": "node ./app.js"
+    "start": "node --unhandled-rejections=strict ./app.js"
   },
   "version": "0.1.0",
   "description": "Warframe Discord bot named Beef Stroganoff (Noffy)",
