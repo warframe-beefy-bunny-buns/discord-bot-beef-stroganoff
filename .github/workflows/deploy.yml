@@ -28,6 +28,6 @@ jobs:
             StrictHostKeyChecking no
           END
       - name: Tunnel SSH
-        run: ssh -fNL $DOCKER_HOST:$REMOTE_DOCKER_PORT $SSH_USER@$SSH_HOST
+        run: ssh -fNL $DOCKER_HOST:$SSH_HOST:$REMOTE_DOCKER_PORT $SSH_USER@$SSH_HOST
       - name: Print Docker Version
         run: docker --version
