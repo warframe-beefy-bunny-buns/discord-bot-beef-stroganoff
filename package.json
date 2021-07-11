@@ -10,7 +10,9 @@
   "author": "Taehyeon Kim <1234tgk@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.21.1",
     "colors": "^1.4.0",
+    "date-fns": "^2.22.1",
     "discord.js": "^12.5.3",
     "dotenv": "^10.0.0"
   }

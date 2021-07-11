@@ -39,8 +39,10 @@ client.on('message', async (message) => {
   try {
     await client.commands.get(command).execute(message, args)
   } catch (error) {
-    console.log(error.red.inverse)
-    message.reply(`\n  There was an error trying to execute that command!`)
+    console.log('ERROR'.red.inverse)
+    console.log(error)
+    console.log('End of error message'.red.inverse)
+    message.reply(`\nThere was an error trying to execute that command!`)
   }
 })
 
