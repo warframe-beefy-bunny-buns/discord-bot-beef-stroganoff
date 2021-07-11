@@ -14,6 +14,22 @@ jobs:
       REMOTE_DOCKER_PORT: 2374
       DOCKER_HOST: localhost:2374
     steps:
+      - uses: actions/checkout@master
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$SSH_KEY" > ~/.ssh/staging.key
+          chmod 600 ~/.ssh/staging.key
+          cat >>~/.ssh/config <<END
+          Host staging
+            HostName $SSH_HOST
+            User $SSH_USER
+            IdentityFile ~/.ssh/staging.key
+            StrictHostKeyChecking no
+          END
+      - name: Tunnel SSH
+        run: ssh -fNL $DOCKER_HOST:staging:$REMOTE_DOCKER_PORT staging
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
       - name: Set up Docker Buildx
@@ -32,20 +48,5 @@ jobs:
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
 
-      - uses: actions/checkout@master
-      - name: Configure SSH
-        run: |
-          mkdir -p ~/.ssh/
-          echo "$SSH_KEY" > ~/.ssh/staging.key
-          chmod 600 ~/.ssh/staging.key
-          cat >>~/.ssh/config <<END
-          Host staging
-            HostName $SSH_HOST
-            User $SSH_USER
-            IdentityFile ~/.ssh/staging.key
-            StrictHostKeyChecking no
-          END
-      - name: Tunnel SSH
-        run: ssh -fNL $DOCKER_HOST:staging:$REMOTE_DOCKER_PORT staging
       - name: Run bot
         run: docker run -e TOKEN=${{ secrets.DISCORD_TOKEN }} ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_REPO }}:latest
