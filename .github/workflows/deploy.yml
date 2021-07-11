@@ -11,6 +11,7 @@ jobs:
       SSH_USER: ${{ secrets.DEPLOY_SSH_USER }}
       SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
       SSH_HOST: ${{ secrets.DEPLOY_SSH_HOST }}
+      REMOTE_DOCKER_PORT: 2374
       DOCKER_HOST: localhost:2374
     steps:
       - uses: actions/checkout@master
@@ -27,7 +28,6 @@ jobs:
             StrictHostKeyChecking no
           END
       - name: Tunnel SSH
-        run: ssh -fNL $DOCKER_HOST:/var/run/docker.sock $SSH_USER@$SSH_HOST
+        run: ssh -fNL $DOCKER_HOST:$REMOTE_DOCKER_PORT $SSH_USER@$SSH_HOST
       - name: Print Docker Version
         run: docker --version
-
