@@ -1,6 +1,7 @@
 // @ts-check
 const { PREFIX } = require('../config')
 const Discord = require('discord.js')
+require('colors')
 
 /**
  * @typedef {(message: Discord.Message, args: string[]) => Promise<void>} CommandHandler

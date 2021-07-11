@@ -2,7 +2,7 @@ const fs = require('fs')
 const Discord = require('discord.js')
 const dotenv = require('dotenv')
 dotenv.config()
-const colors = require('colors')
+require('colors')
 const { TOKEN, PREFIX } = require('./config.js')
 const commandManager = require('./commands')
 
