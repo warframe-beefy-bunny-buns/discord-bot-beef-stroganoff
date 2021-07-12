@@ -1,5 +1,5 @@
 // @ts-check
-const { PREFIX } = require('../config')
+const { PREFIX } = require('./config')
 const Discord = require('discord.js')
 require('colors')
 
