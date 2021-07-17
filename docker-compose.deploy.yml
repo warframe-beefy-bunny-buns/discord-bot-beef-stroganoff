@@ -1,0 +1,12 @@
+version: "3.9"
+secrets:
+  discord-bot-beef-stroganoff.token:
+    external: true
+services:
+  bot:
+    image: 0916dhkim/discord-bot-beef-stroganoff:latest
+    secrets:
+      - discord-bot-beef-stroganoff.token
+    environment:
+      TOKEN_FILE: /run/secrets/discord-bot-beef-stroganoff.token
+
