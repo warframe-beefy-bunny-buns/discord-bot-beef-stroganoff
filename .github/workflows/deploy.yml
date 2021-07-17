@@ -50,7 +50,5 @@ jobs:
           END
       - name: Tunnel SSH
         run: ssh -fNL $DOCKER_HOST:localhost:$REMOTE_DOCKER_PORT staging
-      - name: Create secret
-        run: echo ${{ secrets.DISCORD_TOKEN }} | docker secret create discord-bot-beef-stroganoff.token -
       - name: Run bot
         run: docker stack deploy -c docker-compose.deploy.yml discord-bot-beef-stroganoff
